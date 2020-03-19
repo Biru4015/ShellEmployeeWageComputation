@@ -1,4 +1,6 @@
+#! /bin/bash -x
 echo "Welcome To EmpWageComputation"
+
 function attendance()
 {
 	Random=$((RANDOM%2))
