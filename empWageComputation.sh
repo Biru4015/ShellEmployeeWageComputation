@@ -1,45 +1,36 @@
 #!/bin/bash -x
 echo "Welcome To EmpWageComputation"
-empWagePerHr=20
-empFullTime=1
-empPartTime=2
-dayzPerMonth=20
-TotalSalary=0
-Total_hr=0
-Total_Max_hr=100
-days=1
-function EmployeeManagement ()
+EMP_WAGE_PER_HR=20 
+EMP_FULL_TIME=1
+EMP_PART_TIME=2 
+DAYZ_PER_MONTH=20
+TOTAL_MAX_HR=100
+
+totalSalary=0
+totalHr=0
+
+function GetWorkingHours ()
 {
 
-
-	while [ $Total_hr -le $Total_Max_hr -a $days -le $dayzPerMonth ]
+	for (( day=1; day<=$DAYZ_PER_MONTH; day++ ))
 	do
 	random=$((RANDOM%3))
 	case $random in
 
-     	$empFullTime )
-		empHr=8 ;;
+     	$EMP_FULL_TIME )
+		EMP_HR=8 ;;
 
-	$empPartTime )
-    		empHr=4 ;;
-
+	$EMP_PART_TIME )
+		EMP_HR=4 ;;
 
 	* )
-		empHr=0 ;;
+		EMP_HR=0 ;;
 	esac
-        Total_hr=$(($Total_hr + $empHr))
+	totalHr=$(($totalHr + $EMP_HR))
+done
 
-	salaryPerDay=$(( $empWagePerHr * $empHr ))
-
-        echo "Salary $day is $salaryPerDay"
-
-     	TotalSalary=$(( $salaryPerDay + $TotalSalary ))
-
-        ((++days))
-
-
-	done
 }
 
-EmployeeManagement
- echo "Total Salary for 100 hr and 20 Days is : " = $TotalSalary
+GetWorkingHours
+
+ echo "Total work hours is " = $totalHr
