@@ -43,3 +43,4 @@ function EmployeeManagement ()
 
 EmployeeManagement
  echo "Total Salary for 100 hr and 20 Days is : " = $TotalSalary
+
